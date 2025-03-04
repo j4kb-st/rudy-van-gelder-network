@@ -18,12 +18,12 @@ public class Main {
         File cache = new File("cache.txt");
         if (!cache.exists()) {
             for (int i = 1; i < 12; i++) {
+                System.out.println("Fetching data... (" + i + "/11)");
                 JSONArray temp = (new JSONObject(fetch("https://api.discogs.com/artists/252966/releases?per_page=500&page=" + i))).getJSONArray("releases");
                 for (Object o : temp) {
                     finalArray.put(o);
                 }
             }
-            System.out.println(finalArray);
             result = finalArray;
         } else {
             try {
