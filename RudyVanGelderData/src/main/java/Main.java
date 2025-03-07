@@ -204,7 +204,7 @@ public class Main {
                 }
             }
             for (List<String> edge : edges) {
-                fw.write("\"" + edge.get(0).replaceAll(",", "|") + "\", \"" + edge.get(1).replaceAll(",", "|") + "\",\"" + edge.get(2) + "\", \"" + edge.get(3).replaceAll(",", "|") + "\",\"" + edge.get(4).replaceAll(",", "|") + "\"\n");
+                fw.write("\"" + edge.get(0).replaceAll(",(?! Jr\\.)", "|") + "\", \"" + edge.get(1).replaceAll(",(?! Jr\\.)", "|") + "\",\"" + edge.get(2) + "\", \"" + edge.get(3).replaceAll(",(?! Jr\\.)", "|") + "\",\"" + edge.get(4).replaceAll(",(?! Jr\\.)", "|") + "\"\n");
             }
             fw.close();
         } catch (IOException e) {
