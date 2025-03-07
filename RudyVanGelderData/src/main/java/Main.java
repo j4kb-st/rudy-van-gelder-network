@@ -197,12 +197,10 @@ public class Main {
                     }
 
                     for (String interpreter : singular) {
-                        String year = null;
-                        if (!result.getJSONObject(h).isNull("year")) {
-                            year = String.valueOf(result.getJSONObject(h).getInt("year"));
-                        }
-                        edges.add(Arrays.asList(interpreter, "Rudy Van Gelder", year, result.getJSONObject(h).getString("title"), result.getJSONObject(h).getString("type")));
+                        addRudy(edges, h, interpreter);
                     }
+                } else {
+                    addRudy(edges, h, temp);
                 }
             }
             for (List<String> edge : edges) {
@@ -212,5 +210,13 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static void addRudy(List<List<String>> edges, int h, String temp) {
+        String year = null;
+        if (!result.getJSONObject(h).isNull("year")) {
+            year = String.valueOf(result.getJSONObject(h).getInt("year"));
+        }
+        edges.add(Arrays.asList(temp, "Rudy Van Gelder", year, result.getJSONObject(h).getString("title"), result.getJSONObject(h).getString("type")));
     }
 }
